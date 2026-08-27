@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anushka — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page { size: A4; margin: 0; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1a1a2e;
+      --body: #3d3d56;
+      --muted: #7a7a8c;
+      --light: #b0b0bc;
+      --border: #e4e4ec;
+      --bg: #ffffff;
+      --bg-alt: #f6f6fa;
+      --bg-card: #f0f0f6;
+      --cyan: #0077b6;
+      --cyan-light: #e8f4f8;
+      --violet: #6c3fc5;
+      --violet-light: #f0ecfa;
+      --rose: #d94f5c;
+      --rose-light: #fce8ea;
+      --emerald: #2d9c6f;
+      --emerald-light: #e6f7ef;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #e0e0e0;
+      color: var(--body);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ──────────────────────────────────── */
+    .sidebar {
+      background: var(--bg-alt);
+      padding: 32px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      border-right: 1px solid var(--border);
+    }
+
+    .profile-section { text-align: center; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+      font-family: var(--font-display); font-size: 30px; font-weight: 700; color: #fff;
+    }
+
+    .profile-name {
+      font-family: var(--font-display); font-size: 18px; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.3px; margin-bottom: 2px;
+    }
+
+    .profile-title {
+      font-size: 10px; color: var(--cyan); font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    .sidebar-section h3 {
+      font-family: var(--font-display); font-size: 10px; font-weight: 600;
+      color: var(--ink); letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+
+    .contact-list { list-style: none; }
+    .contact-list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      padding: 4px 0; font-size: 10px; color: var(--body); line-height: 1.4;
+    }
+    .contact-list .icon { width: 14px; flex-shrink: 0; font-size: 9px; margin-top: 1px; color: var(--cyan); }
+    .contact-list a { color: var(--body); text-decoration: none; word-break: break-all; }
+
+    .skill-category { margin-bottom: 10px; }
+    .skill-category-title { font-size: 10px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 3px; }
+    .skill-pill {
+      font-size: 8px; font-weight: 500; padding: 2px 7px; border-radius: 3px;
+    }
+    .skill-pill.cyan { background: var(--cyan-light); color: var(--cyan); }
+    .skill-pill.violet { background: var(--violet-light); color: var(--violet); }
+    .skill-pill.rose { background: var(--rose-light); color: var(--rose); }
+
+    .lang-row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 10px; }
+    .lang-row .l { color: var(--ink); font-weight: 500; }
+    .lang-row .r { color: var(--muted); }
+
+    /* ── Main ─────────────────────────────────────── */
+    .main { padding: 28px 28px 24px 24px; display: flex; flex-direction: column; gap: 18px; }
+
+    .sec-head {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .sec-head .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
+    .sec-head h2 {
+      font-family: var(--font-display); font-size: 11px; font-weight: 600;
+      color: var(--ink); letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
+    }
+    .sec-head .line { flex: 1; height: 1px; background: var(--border); }
+
+    .summary {
+      font-size: 10.5px; line-height: 1.65; color: var(--body);
+    }
+    .summary strong { color: var(--ink); font-weight: 600; }
+    .summary .hl { color: var(--cyan); font-weight: 600; }
+
+    /* Education */
+    .edu-item { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-year { font-size: 10px; color: var(--cyan); font-weight: 600; padding-top: 1px; }
+    .edu-item h4 { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 1px; }
+    .edu-inst { font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+    .edu-badge {
+      display: inline-block; font-size: 9px; font-weight: 600; padding: 1px 7px;
+      border-radius: 3px; background: var(--emerald-light); color: var(--emerald);
+    }
+
+    /* Projects */
+    .proj-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .proj-item:last-child { border-bottom: none; }
+    .proj-item h4 {
+      font-family: var(--font-display); font-size: 11px; font-weight: 600;
+      color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;
+    }
+    .proj-tag {
+      font-size: 8px; font-weight: 600; padding: 1px 6px; border-radius: 3px;
+      background: var(--cyan-light); color: var(--cyan);
+    }
+    .proj-item ul { list-style: none; }
+    .proj-item ul li {
+      font-size: 10px; line-height: 1.55; color: var(--body);
+      padding: 1px 0 1px 12px; position: relative;
+    }
+    .proj-item ul li::before {
+      content: ''; position: absolute; left: 0; top: 7px;
+      width: 5px; height: 1.5px; background: var(--cyan); border-radius: 1px;
+    }
+
+    /* Certificate */
+    .cert-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 12px 14px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
+    }
+    .cert-field .cl { font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .cert-field .cv { font-size: 10px; color: var(--ink); font-weight: 600; }
+
+    /* Achievements */
+    .ach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .ach-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 5px; padding: 10px 8px; text-align: center;
+    }
+    .ach-item .em { font-size: 16px; margin-bottom: 2px; }
+    .ach-item h5 { font-family: var(--font-display); font-size: 9px; font-weight: 600; color: var(--ink); margin-bottom: 1px; }
+    .ach-item p { font-size: 8px; color: var(--muted); }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-section">
+        <div class="avatar">A</div>
+        <div class="profile-name">Anushka</div>
+        <div class="profile-title">Analytics · Finance · AI</div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Contact</h3>
+        <ul class="contact-list">
+          <li><span class="icon">✉</span><a href="mailto:anushkanathani11@gmail.com">anushkanathani11@gmail.com</a></li>
+          <li><span class="icon">☎</span><span>9525938124</span></li>
+          <li><span class="icon">◉</span><span>Muzaffarpur, Bihar</span></li>
+          <li><span class="icon">◎</span><a href="#">linkedin.com/in/anushka</a></li>
+          <li><span class="icon">⟨/⟩</span><a href="#">github.com/anushka</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Skills</h3>
+        <div class="skill-category">
+          <div class="skill-category-title">Business & Analytics</div>
+          <div class="skill-pills">
+            <span class="skill-pill cyan">KPI Analysis</span>
+            <span class="skill-pill cyan">Data Viz</span>
+            <span class="skill-pill cyan">Regression</span>
+            <span class="skill-pill cyan">Data Cleaning</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">Tools & Programming</div>
+          <div class="skill-pills">
+            <span class="skill-pill violet">Python</span>
+            <span class="skill-pill violet">Tableau</span>
+            <span class="skill-pill violet">Excel</span>
+            <span class="skill-pill violet">APIs</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">AI & Finance</div>
+          <div class="skill-pills">
+            <span class="skill-pill rose">Gen AI</span>
+            <span class="skill-pill rose">LLM</span>
+            <span class="skill-pill rose">Prompt Eng</span>
+            <span class="skill-pill rose">AI Agents</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Languages</h3>
+        <div class="lang-row"><span class="l">English</span><span class="r">Fluent</span></div>
+        <div class="lang-row"><span class="l">Hindi</span><span class="r">Native</span></div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <section>
+        <div class="sec-head">
+          <div class="dot"></div>
+          <h2>Professional Summary</h2>
+          <div class="line"></div>
+        </div>
+        <p class="summary">
+          Commerce &amp; finance undergraduate pursuing <strong>CA Intermediate</strong>, with training in
+          <strong>Business Analytics</strong> and <strong>Generative &amp; Agentic AI</strong> (Masai × BITSOM).
+          Skilled in <span class="hl">KPI analysis</span>, <span class="hl">data visualization</span>,
+          <span class="hl">Tableau</span>, and <span class="hl">Python</span>. Seeking entry-level
+          Business Analyst, Finance Analyst, or Analytics opportunities.
+        </p>
+      </section>
+
+      <section>
+        <div class="sec-head">
+          <div class="dot"></div>
+          <h2>Education</h2>
+          <div class="line"></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2025 – Now</div>
+          <div>
+            <h4>CA Intermediate</h4>
+            <div class="edu-inst">ICAI</div>
+            <span class="edu-badge">Pursuing</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2025 – 2028</div>
+          <div>
+            <h4>B.Com (Hons)</h4>
+            <div class="edu-inst">IGNOU</div>
+            <span class="edu-badge">Expected</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2025</div>
+          <div>
+            <h4>Class 12 — CBSE</h4>
+            <div class="edu-inst">Central Board of Secondary Education</div>
+            <span class="edu-badge">88.6%</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head">
+          <div class="dot"></div>
+          <h2>Projects</h2>
+          <div class="line"></div>
+        </div>
+        <div class="proj-item">
+          <h4>KPI Experiment & Business Analytics <span class="proj-tag">Analytics</span></h4>
+          <ul>
+            <li>Designed a KPI-focused analytics exercise involving experiment design and business outcome interpretation</li>
+            <li>Applied problem-framing and KPI-based analysis to support data-driven decision-making</li>
+          </ul>
+        </div>
+        <div class="proj-item">
+          <h4>Business Performance Dashboard <span class="proj-tag">Tableau</span></h4>
+          <ul>
+            <li>Developed dashboard analyzing Profit Margin, Cost, AOV, Return Rate and Shipping Delay</li>
+            <li>Built interactive visualizations for business performance metrics and trends</li>
+          </ul>
+        </div>
+        <div class="proj-item">
+          <h4>Data Cleaning & Quality Analysis <span class="proj-tag">Python</span></h4>
+          <ul>
+            <li>Analyzed data quality, identified duplicates to improve dataset reliability</li>
+            <li>Created data-quality and duplicate flags for cleaner downstream analysis</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head">
+          <div class="dot"></div>
+          <h2>Certification</h2>
+          <div class="line"></div>
+        </div>
+        <div class="cert-box">
+          <div class="cert-field"><span class="cl">Programme</span><span class="cv">Business Analytics with Gen & Agentic AI</span></div>
+          <div class="cert-field"><span class="cl">Issued By</span><span class="cv">BITS School of Management</span></div>
+          <div class="cert-field"><span class="cl">Duration</span><span class="cv">Dec 2025 – Jun 2026</span></div>
+          <div class="cert-field"><span class="cl">ID</span><span class="cv">BITSOM/BA/2511785</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head">
+          <div class="dot"></div>
+          <h2>Achievements</h2>
+          <div class="line"></div>
+        </div>
+        <div class="ach-grid">
+          <div class="ach-item"><div class="em">🥈</div><h5>Silver Medalist</h5><p>Karate, SGFI</p></div>
+          <div class="ach-item"><div class="em">🥋</div><h5>1st Dan Black Belt</h5><p>Karate</p></div>
+          <div class="ach-item"><div class="em">🏓</div><h5>TT & Chess</h5><p>Recreational</p></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
