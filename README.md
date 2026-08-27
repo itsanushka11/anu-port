@@ -6,7 +6,7 @@ A modern, interactive portfolio website built with React, TypeScript, and Vite.
 
 ## Live Demo
 
-🔗 [View Portfolio](https://subhamkumar.github.io/anu-port/)
+🔗 [View Portfolio](https://itsanushka11.github.io/anu-port/)
 
 ## Tech Stack
 
