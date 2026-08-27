@@ -52,4 +52,3 @@ npm run build
 ## Resume
 
 The `Anushka-Resume.pdf` is a custom-designed single-page resume with a clean white layout.
-
